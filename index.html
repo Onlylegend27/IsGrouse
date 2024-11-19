@@ -55,13 +55,41 @@
             </video>
             <p style="font-family: 'Courier New', Courier, monospace;">They make it look so easy...</p>
         </div>
-        <!-- Add more portfolio items here -->
+        <div class="portfolio-item">
+            <video controls>
+                <source src="videos/PREVAIL.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p style="font-family: 'Courier New', Courier, monospace;">I can do motion graphics too</p>
+        </div>
+        <div class="portfolio-item">
+            <video controls>
+                <source src="videos/like me.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p style="font-family: 'Courier New', Courier, monospace;">Put em on the news</p>
+        </div>
+        <div class="portfolio-item">
+            <video controls>
+                <source src="videos/peaceful.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p style="font-family: 'Courier New', Courier, monospace;">I also made this website on my own</p>
+        </div>
     </section>
 
     <section id="contact" class="parallax">
         <h2>Contact Me</h2>
         <p style="font-family: 'Courier New', Courier, monospace;">Email: isgrouse@Gmail.com</p>
-        <p style="font-family: 'Courier New', Courier, monospace;">Phone: +123 456 7890</p>
+        <p style="font-family: 'Courier New', Courier, monospace;">Phone: +1 (708) 580 2038</p>
+    </section>
+
+    <section id="gif-showcase" class="parallax">
+        <h2>The Bird</h2>
+        <div class="gif-container">
+            <img src="images/birdspinnygif.gif" alt="Looping GIF" style="width:100%;">
+            <p style="font-family: 'Courier New', Courier, monospace;">Check out this amazing looping GIF of him!</p>
+        </div>
     </section>
 
     <footer>
@@ -79,7 +107,7 @@
             currentFontIndex = (currentFontIndex + 1) % fonts.length;
         }
 
-        setInterval(changeFont, 500); // Change every second (1000 milliseconds)
+        setInterval(changeFont, 500); // Change speed (1000 milliseconds = 1 second)
     </script>
 </body>
 

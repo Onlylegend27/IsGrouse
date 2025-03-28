@@ -19,6 +19,17 @@
 </head>
 
 <body>
+<script>
+    function showAnimations() {
+        document.getElementById('regular-videos').style.display = 'none';
+        document.getElementById('animation-videos').style.display = 'block';
+    }
+
+    function showRegularVideos() {
+        document.getElementById('animation-videos').style.display = 'none';
+        document.getElementById('regular-videos').style.display = 'block';
+    }
+</script>
     <div class="video-background">
         <video autoplay loop muted>
             <source src="videos/guassian.mov" type="video/mp4">
@@ -29,6 +40,7 @@
         <h1 id="header-title">Grouse</h1>
         <nav>
             <ul>
+                <li><button onclick="toggleVideos()">Show Animations</button></li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#My Masterpieces">My Masterpieces</a></li>
@@ -48,43 +60,58 @@
     </section>
 
     <section id="My Masterpieces" class="parallax">
-        <h2>My Masterpieces</h2>
+    <h2>My Masterpieces</h2>
+
+    <!-- Regular Videos (Default View) -->
+    <div id="regular-videos">
         <div class="portfolio-item">
             <video controls>
                 <source src="videos/blalenciaga.mov" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <p style="font-family: 'Courier New', Courier, monospace;">3D Motion Graphics</p>
+            <p>3D Motion Graphics</p>
         </div>
         <div class="portfolio-item">
             <video controls>
                 <source src="videos/I beenontheeway.mov" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <p style="font-family: 'Courier New', Courier, monospace;">DIRECTV GUI replicated by yours truly</p>
+            <p>DIRECTV GUI replicated by yours truly</p>
         </div>
         <div class="portfolio-item">
             <video controls>
                 <source src="videos/DiorCoglone.mov" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <p style="font-family: 'Courier New', Courier, monospace;">Basically a whole music video (it's 40 seconds)</p>
+            <p>Basically a whole music video (it's 40 seconds)</p>
         </div>
         <div class="portfolio-item">
             <video controls>
                 <source src="videos/verly last time.mov" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <p style="font-family: 'Courier New', Courier, monospace;">Professional Storerunner</p>
+            <p>Professional Storerunner</p>
         </div>
         <div class="portfolio-item">
             <video controls>
                 <source src="videos/peaceful.mov" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <p style="font-family: 'Courier New', Courier, monospace;">I also made this website on my own</p>
+            <p>I also made this website on my own</p>
         </div>
-    </section>
+    </div>
+
+    <!-- Animation Videos (Hidden by Default) -->
+    <div id="animation-videos" style="display: none;">
+        <div class="portfolio-item">
+            <video controls>
+                <source src="videos/animation1.mov" type="video/mp4">
+            </video>
+            <p>Animation Video 1</p>
+        </div>
+        <div class="portfolio-item">
+            <video controls>
+                <source src="videos/animation2.mov" type="video/mp4">
+            </video>
+            <p>Animation Video 2</p>
+        </div>
+    </div>
+</section>
 
     <section id="contact" class="parallax">
         <h2>Contact Me</h2>

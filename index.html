@@ -7,7 +7,8 @@
     <title>Grouse</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/320grouse.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Arial&family=Courier+New&family=Georgia&family=Times+New+Roman&display=swap" rel="stylesheet">
+    <!-- Expanded font list with more variety -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Arial&family=Courier+New&family=Georgia&family=Times+New+Roman&family=Pacifico&family=Permanent+Marker&family=Lobster&family=Bangers&family=Audiowide&family=Press+Start+2P&family=Bebas+Neue&family=Dancing+Script&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
     <!-- Open Graph meta tags -->
     <meta property="og:title" content="Grouse - The Greatest Editor">
@@ -178,10 +179,16 @@
         <p>&copy; 2025 Grouse. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for font cycling and video category toggling -->
+    <!-- JavaScript for enhanced font cycling and video category toggling -->
     <script>
-        // Font cycling script
-        const fonts = ['Roboto', 'Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Verdana', 'Trebuchet MS'];
+        // Enhanced font cycling script with more fonts and faster speed
+        const fonts = [
+            'Roboto', 'Arial', 'Courier New', 'Georgia', 'Times New Roman', 
+            'Verdana', 'Trebuchet MS', 'Pacifico', 'Permanent Marker', 
+            'Lobster', 'Bangers', 'Audiowide', 'Press Start 2P', 
+            'Bebas Neue', 'Dancing Script', 'Shadows Into Light',
+            'Impact', 'Comic Sans MS', 'Tahoma', 'Lucida Console'
+        ];
         let currentFontIndex = 0;
 
         function changeFont() {
@@ -190,7 +197,8 @@
             currentFontIndex = (currentFontIndex + 1) % fonts.length;
         }
 
-        setInterval(changeFont, 500); // Change speed (500 milliseconds = 0.5 second)
+        // Change font every 300ms (faster than before)
+        setInterval(changeFont, 300);
         
         // Video category toggling script
         function toggleCategory() {

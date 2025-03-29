@@ -73,20 +73,20 @@ section {
     height: auto;
     z-index: -1;
 }
-/* Updated portfolio item styling for better centering */
+/* Fixed styling for both video categories */
 #editing-videos, #animation-videos {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1200px; /* Prevents extreme stretching on large screens */
 }
+/* Ensure portfolio-item is consistent across both categories */
 .portfolio-item {
     display: flex;
     flex-direction: column;
     margin: 20px 0;
     align-items: center;
-    width: 100%;
+    width: 80%; /* Keep this consistent with your original design */
     max-width: 800px; /* Controls maximum video width */
 }
 .portfolio-item video {
@@ -109,6 +109,11 @@ footer {
     padding: 20px;
     width: 100%;
     font-family: 'Courier New', Courier, monospace;
+}
+/* Make sure JavaScript display changes work properly */
+#animation-videos {
+    width: 100%;
+    display: none; /* Initially hidden, but preserves layout when shown */
 }
 /* Add responsive adjustments */
 @media (max-width: 768px) {

@@ -88,13 +88,14 @@ section {
     z-index: -1;
 }
 
-/* VIDEO SECTIONS - KEEP VIDEOS CENTERED */
+/* VIDEO SECTIONS - ENSURE FULL CENTERING */
 .video-section {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 /* HIDE ANIMATION VIDEOS INITIALLY */
@@ -102,20 +103,19 @@ section {
     display: none;
 }
 
-/* VIDEO ITEMS */
+/* VIDEO ITEMS - MAINTAIN ORIGINAL SIZE & PERFECT CENTERING */
 .portfolio-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 20px 0;
-    width: 80%;
-    max-width: 800px;
     text-align: center;
 }
 
+/* Ensures video uses its natural dimensions */
 .portfolio-item video {
-    width: 100%;
+    max-width: 100%; /* Prevents overflowing on smaller screens */
     height: auto;
     border: 2px solid #00FF00;
     display: block;
@@ -157,6 +157,6 @@ footer {
 /* RESPONSIVE FIXES */
 @media (max-width: 768px) {
     .portfolio-item {
-        width: 95%;
+        width: 100%;
     }
 }

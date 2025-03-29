@@ -9,6 +9,8 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+/* Fix the header */
 header {
     background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
@@ -22,13 +24,15 @@ header h1 {
     padding: 20px;
     font-size: 2em;
 }
+
+/* Center the navigation */
 nav ul {
     list-style: none;
     padding: 0;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
 }
 nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 nav ul li a {
@@ -36,17 +40,21 @@ nav ul li a {
     text-decoration: none;
     font-family: 'Courier New', Courier, monospace;
 }
+
+/* Make sure sections are centered */
 section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 120px 20px; /* Increased padding at top to avoid content overlap under fixed header */
+    padding: 120px 20px; /* Avoids content overlap under fixed header */
     text-align: center;
     min-height: 100vh;
     width: 100%;
     box-sizing: border-box;
 }
+
+/* Background */
 .parallax {
     background-attachment: fixed;
     background-size: cover;
@@ -57,6 +65,8 @@ section {
 #about, #portfolio, #contact {
     background: rgba(0, 0, 0, 0.9);
 }
+
+/* Video Background */
 .video-background {
     position: fixed;
     top: 0;
@@ -73,28 +83,37 @@ section {
     height: auto;
     z-index: -1;
 }
-/* Fixed styling for both video categories */
+
+/* 🔥 Fix Video Sections Centering */
 #editing-videos, #animation-videos {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;  /* Ensures centering */
     width: 100%;
 }
-/* Ensure portfolio-item is consistent across both categories */
+
+/* 🔥 Ensure portfolio-item is centered */
 .portfolio-item {
     display: flex;
     flex-direction: column;
-    margin: 20px 0;
     align-items: center;
-    width: 80%; /* Keep this consistent with your original design */
+    justify-content: center;  /* Centers videos */
+    margin: 20px 0;
+    width: 80%; /* Keep width consistent */
     max-width: 800px; /* Controls maximum video width */
 }
+
+/* 🔥 Fix Video Centering */
 .portfolio-item video {
     width: 100%;
+    max-width: 800px;  /* Prevents excessive stretching */
     height: auto;
     border: 2px solid #00FF00;
-    display: block; /* Removes any default spacing issues */
+    display: block; /* Ensures no weird spacing */
 }
+
+/* 🔥 Make sure category switcher is centered */
 .category-selector {
     display: flex;
     align-items: center;
@@ -102,6 +121,8 @@ section {
     margin-bottom: 30px;
     width: 100%;
 }
+
+/* Footer */
 footer {
     background-color: rgba(0, 0, 0, 0.8);
     color: #00FF00;
@@ -110,12 +131,17 @@ footer {
     width: 100%;
     font-family: 'Courier New', Courier, monospace;
 }
-/* Make sure JavaScript display changes work properly */
+
+/* 🔥 Fix: Keep Animation Videos Centered & Hidden Initially */
 #animation-videos {
     width: 100%;
-    display: none; /* Initially hidden, but preserves layout when shown */
+    display: none; /* Hidden initially */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-/* Add responsive adjustments */
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .portfolio-item {
         width: 95%;

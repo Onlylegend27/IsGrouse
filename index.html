@@ -44,48 +44,14 @@
             margin-left: 10px;
             display: inline-block;
         }
-        
-        /* Audio controls styling */
-        .audio-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 1000;
-            display: none;
-        }
-        
-        .audio-controls button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 3px;
-            margin: 0 5px;
-        }
-        
-        .audio-controls button:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 
 <body>
-    <!-- Add audio element -->
-    <audio id="grouse-audio">
+    <!-- Add hidden audio element -->
+    <audio id="grouse-audio" style="display:none;">
         <source src="videos/CallOfTheGrouse.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
     </audio>
-    
-    <!-- Add audio controls -->
-    <div class="audio-controls" id="audio-controls">
-        <button id="play-pause-btn">Pause</button>
-        <button id="mute-btn">Mute</button>
-    </div>
 
     <div class="video-background">
         <video autoplay loop muted>
@@ -261,68 +227,43 @@
             }
         }
 
-        // Audio autoplay script
+        // Simple audio autoplay script - just play it once when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             const grouseAudio = document.getElementById('grouse-audio');
-            const audioControls = document.getElementById('audio-controls');
-            const playPauseBtn = document.getElementById('play-pause-btn');
-            const muteBtn = document.getElementById('mute-btn');
             
-            // Attempt to play audio when page loads
-            setTimeout(function() {
-                grouseAudio.play()
-                .then(() => {
-                    // Show audio controls if audio starts playing
-                    audioControls.style.display = 'block';
-                })
-                .catch(error => {
-                    console.log('Audio autoplay was prevented by the browser:', error);
-                    // Many browsers block autoplay, so we'll provide a play button
-                    const playPrompt = document.createElement('div');
-                    playPrompt.style.position = 'fixed';
-                    playPrompt.style.top = '20px';
-                    playPrompt.style.left = '50%';
-                    playPrompt.style.transform = 'translateX(-50%)';
-                    playPrompt.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-                    playPrompt.style.color = 'white';
-                    playPrompt.style.padding = '15px';
-                    playPrompt.style.borderRadius = '5px';
-                    playPrompt.style.zIndex = '1001';
-                    playPrompt.innerHTML = '<p>Click to hear the Call of the Grouse!</p><button id="manual-play" style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; cursor: pointer; border-radius: 3px;">Play Audio</button>';
-                    document.body.appendChild(playPrompt);
-                    
-                    document.getElementById('manual-play').addEventListener('click', function() {
-                        grouseAudio.play();
-                        audioControls.style.display = 'block';
-                        playPrompt.remove();
-                    });
-                });
-            }, 1000);
-            
-            // Make sure audio doesn't loop
+            // Ensure it only plays once
             grouseAudio.loop = false;
             
-            // Play/Pause button functionality
-            playPauseBtn.addEventListener('click', function() {
-                if (grouseAudio.paused) {
-                    grouseAudio.play();
-                    playPauseBtn.textContent = 'Pause';
-                } else {
-                    grouseAudio.pause();
-                    playPauseBtn.textContent = 'Play';
-                }
+            // Multiple attempts to play the audio, with exponential backoff
+            // This helps overcome some browser restrictions
+            let attempts = 0;
+            const maxAttempts = 3;
+            const tryToPlay = () => {
+                attempts++;
+                grouseAudio.play().catch(error => {
+                    console.log('Audio autoplay attempt ' + attempts + ' failed:', error);
+                    if (attempts < maxAttempts) {
+                        setTimeout(tryToPlay, 1000 * Math.pow(2, attempts - 1));
+                    }
+                });
+            };
+            
+            // Use user interaction to trigger audio (most reliable method)
+            const handleInteraction = () => {
+                grouseAudio.play().catch(e => console.log('Still failed to play audio:', e));
+                // Remove listeners after first interaction
+                ['click', 'touchstart', 'keydown'].forEach(event => {
+                    document.removeEventListener(event, handleInteraction);
+                });
+            };
+            
+            // Add event listeners for common user interactions
+            ['click', 'touchstart', 'keydown'].forEach(event => {
+                document.addEventListener(event, handleInteraction, { once: true });
             });
             
-            // Mute button functionality
-            muteBtn.addEventListener('click', function() {
-                grouseAudio.muted = !grouseAudio.muted;
-                muteBtn.textContent = grouseAudio.muted ? 'Unmute' : 'Mute';
-            });
-            
-            // Update button text when audio ends
-            grouseAudio.addEventListener('ended', function() {
-                playPauseBtn.textContent = 'Play';
-            });
+            // Also try to play automatically after a short delay
+            setTimeout(tryToPlay, 1000);
         });
     </script>
 </body>

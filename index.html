@@ -22,8 +22,13 @@
         #audio-overlay video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* FIT FULL SCREEN */
-            display: none; /* HIDDEN UNTIL PLAY */
+            object-fit: cover; /* fullscreen */
+            opacity: 0; /* start hidden */
+            transition: none; /* no fade */
+        }
+
+        #audio-overlay.active video {
+            opacity: 1; /* show instantly */
         }
     </style>
 </head>
@@ -121,13 +126,13 @@ document.addEventListener('click', () => {
 }, { once: true });
 
 audio.addEventListener('play', () => {
+    overlay.classList.add('active');
     overlayVideo.currentTime = 0;
-    overlayVideo.style.display = 'block';
     overlayVideo.play().catch(() => {});
 });
 
 overlayVideo.addEventListener('ended', () => {
-    overlayVideo.style.display = 'none'; // INSTANTLY DISAPPEAR
+    overlay.classList.remove('active'); // disappears instantly
 });
 
 /* BOUNDED PARALLAX */

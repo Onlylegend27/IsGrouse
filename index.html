@@ -5,269 +5,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grouse</title>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/320grouse.png" type="image/png">
-    <!-- Expanded font list with more variety -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Arial&family=Courier+New&family=Georgia&family=Times+New+Roman&family=Pacifico&family=Permanent+Marker&family=Lobster&family=Bangers&family=Audiowide&family=Press+Start+2P&family=Bebas+Neue&family=Dancing+Script&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
-    <!-- Open Graph meta tags -->
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Courier+New&family=Bebas+Neue&family=Audiowide&family=Permanent+Marker&family=Press+Start+2P&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+    <!-- Open Graph -->
     <meta property="og:title" content="Grouse - The Greatest Editor">
-    <meta property="og:description" content="Discover the world of Grouse, the greatest editor.">
+    <meta property="og:description" content="Discover the world of Grouse.">
     <meta property="og:image" content="https://onlylegend27.github.io/IsGrouse/images/birdspinnygif.gif">
     <meta property="og:url" content="https://onlylegend27.github.io/IsGrouse/">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <style>
-        .toggle-button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .toggle-button:hover {
-            background-color: #45a049;
-        }
-        
-        .category-label {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 18px;
-            margin-left: 10px;
-            display: inline-block;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Add hidden audio element -->
-    <audio id="grouse-audio" style="display:none;">
+
+    <!-- Audio -->
+    <audio id="grouse-audio">
         <source src="videos/CallOfTheGrouse.mp3" type="audio/mp3">
     </audio>
 
+    <!-- Background Video -->
     <div class="video-background">
-        <video autoplay loop muted>
+        <video autoplay loop muted playsinline>
             <source src="videos/guassian.mov" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
     </div>
+
+    <!-- Header -->
     <header>
         <h1 id="header-title">Grouse</h1>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#My Masterpieces">My Masterpieces</a></li>
-                <li><a href="#contact">contact</a></li>
+                <li><a href="#masterpieces">Masterpieces</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="parallax">
+    <section id="home">
         <h2>GREATEST EDITOR</h2>
         <p>The World Is Yours.</p>
     </section>
 
-    <section id="about" class="parallax">
+    <section id="about">
         <h2>About Me</h2>
-        <p style="font-family: 'Courier New', Courier, monospace;">Grouse is a bird.</p>
+        <p>Grouse is a bird.</p>
     </section>
 
-    <section id="My Masterpieces" class="parallax">
+    <section id="masterpieces">
         <h2>My Masterpieces</h2>
-        
+
         <div class="category-selector">
-            <button id="toggleButton" class="toggle-button" onclick="toggleCategory()">Switch to Animations</button>
-            <span id="categoryLabel" class="category-label">Currently Viewing: Editing Videos</span>
+            <button id="toggleButton">Switch to Animations</button>
+            <span id="categoryLabel">Viewing: Editing Videos</span>
         </div>
-        
-        <div id="editing-videos">
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="videos/blalenciaga.mov" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">3D Motion Graphics</p>
-            </div>
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="videos/EveryMinuteOfEveryDay.mov" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">I can 3D model my onw stuff to if you care...</p>
-            </div>
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="videos/DiorCoglone.mov" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">Basically a whole music video (it's 40 seconds)</p>
-            </div>
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="videos/verly last time.mov" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">Professional Storerunner</p>
-            </div>
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="videos/p2.mov" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">I also made this website on my own</p>
-            </div>
+
+        <div id="editing-videos" class="video-grid">
+            <!-- Add unlimited videos here -->
+            <div class="portfolio-item"><video controls src="videos/blalenciaga.mov"></video><p>3D Motion Graphics</p></div>
+            <div class="portfolio-item"><video controls src="videos/EveryMinuteOfEveryDay.mov"></video><p>3D Modeling</p></div>
+            <div class="portfolio-item"><video controls src="videos/DiorCoglone.mov"></video><p>Music Video</p></div>
+            <div class="portfolio-item"><video controls src="videos/verly last time.mov"></video><p>Professional Edit</p></div>
+            <div class="portfolio-item"><video controls src="videos/p2.mov"></video><p>Website Creation</p></div>
         </div>
-        
-        <div id="animation-videos" style="display: none;">
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="animations/crashesalot.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">Animation Project 1</p>
-            </div>
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="animations/store(1).mov" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">Animation Project 2</p>
-            </div>
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="animations/Vincestaples.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">Animation Project 3</p>
-            </div>
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="animations/gungeesdssd.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">Animation Project 4</p>
-            </div>
-            <div class="portfolio-item">
-                <video controls>
-                    <source src="animations/vegetalasd.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="font-family: 'Courier New', Courier, monospace;">Animation Project 5</p>
-            </div>
+
+        <div id="animation-videos" class="video-grid hidden">
+            <div class="portfolio-item"><video controls src="animations/crashesalot.mp4"></video><p>Animation 1</p></div>
+            <div class="portfolio-item"><video controls src="animations/store(1).mov"></video><p>Animation 2</p></div>
+            <div class="portfolio-item"><video controls src="animations/Vincestaples.mp4"></video><p>Animation 3</p></div>
+            <div class="portfolio-item"><video controls src="animations/gungeesdssd.mp4"></video><p>Animation 4</p></div>
+            <div class="portfolio-item"><video controls src="animations/vegetalasd.mp4"></video><p>Animation 5</p></div>
         </div>
     </section>
 
-    <section id="contact" class="parallax">
-        <h2>Contact Me</h2>
-        <p style="font-family: 'Courier New', Courier, monospace;">Email: isgrouse@Gmail.com</p>
-        <p style="font-family: 'Courier New', Courier, monospace;">Tiktok: @isgrouse</p>
-        <p style="font-family: 'Courier New', Courier, monospace;">instagram: @isgrouse</p>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: isgrouse@gmail.com</p>
+        <p>TikTok: @isgrouse</p>
+        <p>Instagram: @isgrouse</p>
     </section>
 
-    <section id="gif-showcase" class="parallax">
+    <section id="gif-showcase">
         <h2>The Bird</h2>
-        <div class="gif-container">
-            <img src="images/birdspinnygif.gif" alt="Grouse" style="width:100%;">
-            <p style="font-family: 'Courier New', Courier, monospace;">This is is Grouse ^</p>
-        </div>
+        <img src="images/birdspinnygif.gif" alt="Grouse">
+        <p>This is Grouse.</p>
     </section>
 
     <footer>
-        <p>&copy; 2025 Grouse. All rights reserved.</p>
+        <p>&copy; 2025 Grouse</p>
     </footer>
 
-    <!-- JavaScript for enhanced font cycling and video category toggling -->
+    <!-- Hold-to-fade button -->
+    <button id="peek-bg">HOLD TO VIEW BACKGROUND</button>
+
+    <!-- Scripts -->
     <script>
-        // Enhanced font cycling script with more fonts and faster speed
+        /* Header font cycling */
         const fonts = [
-            'Roboto', 'Arial', 'Courier New', 'Georgia', 'Times New Roman', 
-            'Verdana', 'Trebuchet MS', 'Pacifico', 'Permanent Marker', 
-            'Lobster', 'Bangers', 'Audiowide', 'Press Start 2P', 
-            'Bebas Neue', 'Dancing Script', 'Shadows Into Light',
-            'Impact', 'Comic Sans MS', 'Tahoma', 'Lucida Console'
+            'Bebas Neue',
+            'Audiowide',
+            'Press Start 2P',
+            'Permanent Marker',
+            'Courier New',
+            'Roboto',
+            'Shadows Into Light'
         ];
-        let currentFontIndex = 0;
 
-        function changeFont() {
-            const headerTitle = document.getElementById('header-title');
-            headerTitle.style.fontFamily = fonts[currentFontIndex];
-            currentFontIndex = (currentFontIndex + 1) % fonts.length;
+        let fontIndex = 0;
+        const title = document.getElementById('header-title');
+
+        function cycleFont() {
+            title.style.opacity = 0;
+            setTimeout(() => {
+                title.style.fontFamily = fonts[fontIndex];
+                fontIndex = (fontIndex + 1) % fonts.length;
+                title.style.opacity = 1;
+            }, 120);
         }
 
-        // Change font every 300ms (faster than before)
-        setInterval(changeFont, 300);
-        
-        // Video category toggling script
-        function toggleCategory() {
-            const editingVideos = document.getElementById('editing-videos');
-            const animationVideos = document.getElementById('animation-videos');
-            const toggleButton = document.getElementById('toggleButton');
-            const categoryLabel = document.getElementById('categoryLabel');
-            
-            if (editingVideos.style.display !== 'none') {
-                // Switch to animations
-                editingVideos.style.display = 'none';
-                animationVideos.style.display = 'block';
-                toggleButton.textContent = 'Switch to Editing';
-                categoryLabel.textContent = 'Currently Viewing: Animation Videos';
-            } else {
-                // Switch to editing
-                editingVideos.style.display = 'block';
-                animationVideos.style.display = 'none';
-                toggleButton.textContent = 'Switch to Animations';
-                categoryLabel.textContent = 'Currently Viewing: Editing Videos';
-            }
-        }
+        setInterval(cycleFont, 200);
 
-        // Simple audio autoplay script - just play it once when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            const grouseAudio = document.getElementById('grouse-audio');
-            
-            // Ensure it only plays once
-            grouseAudio.loop = false;
-            
-            // Multiple attempts to play the audio, with exponential backoff
-            // This helps overcome some browser restrictions
-            let attempts = 0;
-            const maxAttempts = 3;
-            const tryToPlay = () => {
-                attempts++;
-                grouseAudio.play().catch(error => {
-                    console.log('Audio autoplay attempt ' + attempts + ' failed:', error);
-                    if (attempts < maxAttempts) {
-                        setTimeout(tryToPlay, 1000 * Math.pow(2, attempts - 1));
-                    }
-                });
-            };
-            
-            // Use user interaction to trigger audio (most reliable method)
-            const handleInteraction = () => {
-                grouseAudio.play().catch(e => console.log('Still failed to play audio:', e));
-                // Remove listeners after first interaction
-                ['click', 'touchstart', 'keydown'].forEach(event => {
-                    document.removeEventListener(event, handleInteraction);
-                });
-            };
-            
-            // Add event listeners for common user interactions
-            ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.addEventListener(event, handleInteraction, { once: true });
-            });
-            
-            // Also try to play automatically after a short delay
-            setTimeout(tryToPlay, 1000);
-        });
+        /* Category toggle */
+        document.getElementById('toggleButton').onclick = () => {
+            document.getElementById('editing-videos').classList.toggle('hidden');
+            document.getElementById('animation-videos').classList.toggle('hidden');
+            document.getElementById('categoryLabel').textContent =
+                document.getElementById('editing-videos').classList.contains('hidden')
+                ? 'Viewing: Animation Videos'
+                : 'Viewing: Editing Videos';
+        };
+
+        /* Audio */
+        const audio = document.getElementById('grouse-audio');
+        audio.volume = 0.25;
+        document.addEventListener('click', () => audio.play(), { once: true });
+
+        /* Hold-to-fade UI */
+        const ui = document.querySelectorAll('header, section, footer');
+        const peek = document.getElementById('peek-bg');
+
+        peek.onmousedown = () => ui.forEach(el => el.style.opacity = 0);
+        peek.onmouseup = peek.onmouseleave = () => ui.forEach(el => el.style.opacity = 1);
     </script>
+
 </body>
-
 </html>
-

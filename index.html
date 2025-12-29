@@ -9,33 +9,23 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/320grouse.png" type="image/png">
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Courier+New&family=Bebas+Neue&family=Audiowide&family=Permanent+Marker&family=Press+Start+2P&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Grouse - The Greatest Editor">
-    <meta property="og:description" content="Discover the world of Grouse.">
-    <meta property="og:image" content="https://onlylegend27.github.io/IsGrouse/images/birdspinnygif.gif">
-    <meta property="og:url" content="https://onlylegend27.github.io/IsGrouse/">
-    <meta property="og:type" content="website">
 </head>
 
 <body>
 
-    <!-- Audio -->
     <audio id="grouse-audio">
         <source src="videos/CallOfTheGrouse.mp3" type="audio/mp3">
     </audio>
 
     <!-- Background Video -->
     <div class="video-background">
-        <video autoplay loop muted playsinline>
+        <video id="bg-video" autoplay loop muted playsinline>
             <source src="videos/guassian.mov" type="video/mp4">
         </video>
     </div>
 
-    <!-- Header -->
-    <header>
+    <header class="ui-layer">
         <h1 id="header-title">Grouse</h1>
         <nav>
             <ul>
@@ -47,17 +37,17 @@
         </nav>
     </header>
 
-    <section id="home">
+    <section id="home" class="ui-layer">
         <h2>GREATEST EDITOR</h2>
         <p>The World Is Yours.</p>
     </section>
 
-    <section id="about">
+    <section id="about" class="ui-layer">
         <h2>About Me</h2>
         <p>Grouse is a bird.</p>
     </section>
 
-    <section id="masterpieces">
+    <section id="masterpieces" class="ui-layer">
         <h2>My Masterpieces</h2>
 
         <div class="category-selector">
@@ -65,45 +55,38 @@
             <span id="categoryLabel">Viewing: Editing Videos</span>
         </div>
 
-        <div id="editing-videos" class="video-grid">
-            <!-- Add unlimited videos here -->
-            <div class="portfolio-item"><video controls src="videos/blalenciaga.mov"></video><p>3D Motion Graphics</p></div>
-            <div class="portfolio-item"><video controls src="videos/EveryMinuteOfEveryDay.mov"></video><p>3D Modeling</p></div>
-            <div class="portfolio-item"><video controls src="videos/DiorCoglone.mov"></video><p>Music Video</p></div>
-            <div class="portfolio-item"><video controls src="videos/verly last time.mov"></video><p>Professional Edit</p></div>
-            <div class="portfolio-item"><video controls src="videos/p2.mov"></video><p>Website Creation</p></div>
+        <div id="editing-videos" class="video-stack">
+            <div class="portfolio-item"><video controls src="videos/blalenciaga.mov"></video></div>
+            <div class="portfolio-item"><video controls src="videos/EveryMinuteOfEveryDay.mov"></video></div>
+            <div class="portfolio-item"><video controls src="videos/DiorCoglone.mov"></video></div>
+            <div class="portfolio-item"><video controls src="videos/verly last time.mov"></video></div>
+            <div class="portfolio-item"><video controls src="videos/p2.mov"></video></div>
         </div>
 
-        <div id="animation-videos" class="video-grid hidden">
-            <div class="portfolio-item"><video controls src="animations/crashesalot.mp4"></video><p>Animation 1</p></div>
-            <div class="portfolio-item"><video controls src="animations/store(1).mov"></video><p>Animation 2</p></div>
-            <div class="portfolio-item"><video controls src="animations/Vincestaples.mp4"></video><p>Animation 3</p></div>
-            <div class="portfolio-item"><video controls src="animations/gungeesdssd.mp4"></video><p>Animation 4</p></div>
-            <div class="portfolio-item"><video controls src="animations/vegetalasd.mp4"></video><p>Animation 5</p></div>
+        <div id="animation-videos" class="video-stack hidden">
+            <div class="portfolio-item"><video controls src="animations/crashesalot.mp4"></video></div>
+            <div class="portfolio-item"><video controls src="animations/store(1).mov"></video></div>
+            <div class="portfolio-item"><video controls src="animations/Vincestaples.mp4"></video></div>
+            <div class="portfolio-item"><video controls src="animations/gungeesdssd.mp4"></video></div>
+            <div class="portfolio-item"><video controls src="animations/vegetalasd.mp4"></video></div>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="ui-layer">
         <h2>Contact</h2>
         <p>Email: isgrouse@gmail.com</p>
         <p>TikTok: @isgrouse</p>
         <p>Instagram: @isgrouse</p>
     </section>
 
-    <section id="gif-showcase">
-        <h2>The Bird</h2>
-        <img src="images/birdspinnygif.gif" alt="Grouse">
-        <p>This is Grouse.</p>
+    <section id="peek-section" class="ui-layer">
+        <button id="peek-bg">HOLD TO VIEW BACKGROUND</button>
     </section>
 
-    <footer>
+    <footer class="ui-layer">
         <p>&copy; 2025 Grouse</p>
     </footer>
 
-    <!-- Hold-to-fade button -->
-    <button id="peek-bg">HOLD TO VIEW BACKGROUND</button>
-
-    <!-- Scripts -->
     <script>
         /* Header font cycling */
         const fonts = [
@@ -119,23 +102,21 @@
         let fontIndex = 0;
         const title = document.getElementById('header-title');
 
-        function cycleFont() {
+        setInterval(() => {
             title.style.opacity = 0;
             setTimeout(() => {
                 title.style.fontFamily = fonts[fontIndex];
                 fontIndex = (fontIndex + 1) % fonts.length;
                 title.style.opacity = 1;
             }, 120);
-        }
-
-        setInterval(cycleFont, 200);
+        }, 200);
 
         /* Category toggle */
         document.getElementById('toggleButton').onclick = () => {
-            document.getElementById('editing-videos').classList.toggle('hidden');
-            document.getElementById('animation-videos').classList.toggle('hidden');
-            document.getElementById('categoryLabel').textContent =
-                document.getElementById('editing-videos').classList.contains('hidden')
+            editing-videos.classList.toggle('hidden');
+            animation-videos.classList.toggle('hidden');
+            categoryLabel.textContent =
+                editing-videos.classList.contains('hidden')
                 ? 'Viewing: Animation Videos'
                 : 'Viewing: Editing Videos';
         };
@@ -145,12 +126,25 @@
         audio.volume = 0.25;
         document.addEventListener('click', () => audio.play(), { once: true });
 
-        /* Hold-to-fade UI */
-        const ui = document.querySelectorAll('header, section, footer');
-        const peek = document.getElementById('peek-bg');
+        /* Parallax background */
+        const bgVideo = document.getElementById('bg-video');
+        window.addEventListener('scroll', () => {
+            bgVideo.style.transform =
+                `translate(-50%, calc(-50% + ${window.scrollY * 0.15}px))`;
+        });
 
-        peek.onmousedown = () => ui.forEach(el => el.style.opacity = 0);
-        peek.onmouseup = peek.onmouseleave = () => ui.forEach(el => el.style.opacity = 1);
+        /* Hold-to-fade UI */
+        const uiLayers = document.querySelectorAll('.ui-layer');
+        const peekBtn = document.getElementById('peek-bg');
+
+        const fadeOut = () => uiLayers.forEach(el => el.classList.add('fade'));
+        const fadeIn = () => uiLayers.forEach(el => el.classList.remove('fade'));
+
+        peekBtn.addEventListener('mousedown', fadeOut);
+        peekBtn.addEventListener('mouseup', fadeIn);
+        peekBtn.addEventListener('mouseleave', fadeIn);
+        peekBtn.addEventListener('touchstart', fadeOut);
+        peekBtn.addEventListener('touchend', fadeIn);
     </script>
 
 </body>

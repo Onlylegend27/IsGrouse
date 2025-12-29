@@ -1,134 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grouse</title>
+    <meta charset="UTF-8" />
+    <title>Your Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/320grouse.png" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Courier+New&family=Bebas+Neue&family=Audiowide&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Courier Prime', monospace;
+            color: #00ff00;
+            background: black;
+            overflow-x: hidden;
+        }
+
+        /* ===============================
+           BACKGROUND VIDEO (PARALLAX)
+        =============================== */
+
+        .video-background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110%;
+            height: 120%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            will-change: transform;
+        }
+
+        /* ===============================
+           HEADER
+        =============================== */
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0 20px;
+            gap: 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            height: 60px;
+            line-height: 60px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: opacity 0.2s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* ===============================
+           MAIN CONTENT
+        =============================== */
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+            padding: 120px 0;
+        }
+
+        section {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .video-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .portfolio-video video {
+            width: 100%;
+            max-width: 900px;
+            border: 1px solid #00ff00;
+        }
+
+        /* ===============================
+           VIEW BACKGROUND BUTTON
+        =============================== */
+
+        .view-bg-wrapper {
+            margin: 200px 0 80px;
+            text-align: center;
+        }
+
+        #peek-bg {
+            background: rgba(0, 255, 0, 0.15);
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 10px 18px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* ===============================
+           GROUSE OVERLAY VIDEO
+        =============================== */
+
+        #grouse-overlay {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 2000;
+        }
+    </style>
 </head>
 
 <body>
 
-<audio id="grouse-audio">
-    <source src="videos/CallOfTheGrouse.mp3" type="audio/mp3">
-</audio>
-
+<!-- BACKGROUND VIDEO -->
 <div class="video-background">
-    <video id="bg-video" autoplay loop muted playsinline>
-        <source src="videos/guassian.mov" type="video/mp4">
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="videos/Background.mp4" type="video/mp4">
     </video>
 </div>
 
-<div id="audio-overlay">
-    <!-- PLACE ALPHA VIDEO HERE -->
-</div>
+<!-- OVERLAY VIDEO -->
+<video id="grouse-overlay" playsinline muted>
+    <source src="videos/VideoOverlay.webm" type="video/webm">
+</video>
+
+<!-- AUDIO -->
+<audio id="grouse-audio" src="audio/grouse.mp3"></audio>
 
 <header>
-    <div class="header-inner">
-        <h1 id="header-title">Grouse</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#masterpieces">Masterpieces</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
+    <h1 id="header-title">YOUR TITLE</h1>
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#masterpieces">MASTERPIECES</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
 </header>
 
-<section id="home">
-    <h2>GREATEST EDITOR</h2>
-    <p>The World Is Yours.</p>
-</section>
+<main id="home">
 
-<section id="about">
-    <h2>About</h2>
-    <p>Grouse is a bird.</p>
-</section>
+    <section id="masterpieces">
+        <div class="video-grid">
 
-<section id="masterpieces">
-    <h2>My Masterpieces</h2>
-    <div class="video-stack">
-        <video controls src="videos/blalenciaga.mov"></video>
-        <video controls src="videos/EveryMinuteOfEveryDay.mov"></video>
-        <video controls src="videos/DiorCoglone.mov"></video>
-        <video controls src="videos/verly last time.mov"></video>
-        <video controls src="videos/p2.mov"></video>
-        <video controls src="videos/idkwhatimdoinganymore.mov"></video>
+            <div class="portfolio-video">
+                <video controls src="videos/example1.mp4"></video>
+            </div>
+
+            <div class="portfolio-video">
+                <video controls src="videos/example2.mp4"></video>
+            </div>
+
+            <!-- ADD MORE VIDEOS HERE -->
+
+        </div>
+    </section>
+
+    <!-- VIEW BACKGROUND BUTTON AT TRUE BOTTOM -->
+    <div class="view-bg-wrapper">
+        <button id="peek-bg">HOLD TO VIEW BACKGROUND</button>
     </div>
-</section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: isgrouse@gmail.com</p>
-    <p>TikTok: @isgrouse</p>
-    <p>Instagram: @isgrouse</p>
-</section>
-
-<footer>
-    <p>&copy; 2025 Grouse</p>
-</footer>
+</main>
 
 <script>
-/* HEADER FONT CYCLE */
-const fonts = ['Bebas Neue', 'Audiowide', 'Press Start 2P', 'Courier New'];
-let fontIndex = 0;
-const title = document.getElementById('header-title');
+/* ===============================
+   PARALLAX BACKGROUND SCROLL
+=============================== */
+const bgVideo = document.getElementById('bg-video');
 
-setInterval(() => {
-    title.style.opacity = 0;
-    setTimeout(() => {
-        title.style.fontFamily = fonts[fontIndex];
-        fontIndex = (fontIndex + 1) % fonts.length;
-        title.style.opacity = 1;
-    }, 120);
-}, 300);
-
-/* AUDIO + OVERLAY */
-const audio = document.getElementById('grouse-audio');
-const overlay = document.getElementById('audio-overlay');
-audio.volume = 0.25;
-
-document.addEventListener('click', () => {
-    audio.play().catch(() => {});
-    overlay.classList.add('active');
-}, { once: true });
-
-audio.addEventListener('ended', () => {
-    overlay.classList.remove('active');
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    bgVideo.style.transform = `translate(-50%, ${scrollY * 0.2}px)`;
 });
 
-/* BOUNDED PARALLAX (CORRECT VERSION) */
-const bgVideo = document.getElementById('bg-video');
-const bottomMargin = 40; // space above bottom for clarity
+/* ===============================
+   GROUSE SOUND + OVERLAY VIDEO
+=============================== */
+const grouseAudio = document.getElementById("grouse-audio");
+const overlayVideo = document.getElementById("grouse-overlay");
 
-function updateParallax() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight;
-    const winHeight = window.innerHeight;
+grouseAudio.volume = 0.25;
 
-    const maxScroll = docHeight - winHeight;
-    const scrollProgress = Math.min(scrollTop / maxScroll, 1);
+grouseAudio.addEventListener("play", () => {
+    overlayVideo.currentTime = 0;
+    overlayVideo.style.opacity = "1";
+    overlayVideo.play();
+});
 
-    const videoHeight = bgVideo.offsetHeight;
-    const maxVideoScroll = Math.max(videoHeight - winHeight - bottomMargin, 0);
+overlayVideo.addEventListener("ended", () => {
+    overlayVideo.style.opacity = "0";
+});
 
-    const videoOffset = scrollProgress * maxVideoScroll;
+/* ===============================
+   VIEW BACKGROUND FADE
+=============================== */
+const peekBtn = document.getElementById("peek-bg");
+const uiElements = document.querySelectorAll("header, main");
 
-    bgVideo.style.transform =
-        `translate(-50%, calc(-50% + ${videoOffset}px))`;
-}
+peekBtn.addEventListener("mousedown", () => {
+    uiElements.forEach(el => el.style.transition = "opacity 0.6s ease");
+    uiElements.forEach(el => el.style.opacity = "0");
+});
 
-window.addEventListener('scroll', updateParallax);
-window.addEventListener('resize', updateParallax);
-window.addEventListener('load', updateParallax);
+["mouseup", "mouseleave"].forEach(evt => {
+    peekBtn.addEventListener(evt, () => {
+        uiElements.forEach(el => el.style.opacity = "1");
+    });
+});
 </script>
 
 </body>
 </html>
-

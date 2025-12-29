@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,23 +8,35 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/320grouse.png" type="image/png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Courier+New&family=Bebas+Neue&family=Audiowide&family=Permanent+Marker&family=Press+Start+2P&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+New&family=Bebas+Neue&family=Audiowide&family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <audio id="grouse-audio">
-        <source src="videos/CallOfTheGrouse.mp3" type="audio/mp3">
-    </audio>
+<!-- Audio -->
+<audio id="grouse-audio">
+    <source src="videos/CallOfTheGrouse.mp3" type="audio/mp3">
+</audio>
 
-    <!-- Background Video -->
-    <div class="video-background">
-        <video id="bg-video" autoplay loop muted playsinline>
-            <source src="videos/guassian.mov" type="video/mp4">
-        </video>
-    </div>
+<!-- Background Video -->
+<div class="video-background">
+    <video id="bg-video" autoplay loop muted playsinline>
+        <source src="videos/guassian.mov" type="video/mp4">
+    </video>
+</div>
 
-    <header class="ui-layer">
+<!-- Overlay video triggered by audio -->
+<div id="audio-overlay">
+    <!-- ADD YOUR ALPHA VIDEO HERE -->
+    <!-- Example:
+    <video autoplay muted playsinline>
+        <source src="videos/overlay-alpha.webm" type="video/webm">
+    </video>
+    -->
+</div>
+
+<header>
+    <div class="header-inner">
         <h1 id="header-title">Grouse</h1>
         <nav>
             <ul>
@@ -35,117 +46,83 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <section id="home" class="ui-layer">
-        <h2>GREATEST EDITOR</h2>
-        <p>The World Is Yours.</p>
-    </section>
+<section id="home">
+    <h2>GREATEST EDITOR</h2>
+    <p>The World Is Yours.</p>
+</section>
 
-    <section id="about" class="ui-layer">
-        <h2>About Me</h2>
-        <p>Grouse is a bird.</p>
-    </section>
+<section id="about">
+    <h2>About</h2>
+    <p>Grouse is a bird.</p>
+</section>
 
-    <section id="masterpieces" class="ui-layer">
-        <h2>My Masterpieces</h2>
+<section id="masterpieces">
+    <h2>My Masterpieces</h2>
 
-        <div class="category-selector">
-            <button id="toggleButton">Switch to Animations</button>
-            <span id="categoryLabel">Viewing: Editing Videos</span>
-        </div>
+    <div class="video-stack">
+        <video controls src="videos/blalenciaga.mov"></video>
+        <video controls src="videos/EveryMinuteOfEveryDay.mov"></video>
+        <video controls src="videos/DiorCoglone.mov"></video>
+        <video controls src="videos/verly last time.mov"></video>
+        <video controls src="videos/p2.mov"></video>
+    </div>
+</section>
 
-        <div id="editing-videos" class="video-stack">
-            <div class="portfolio-item"><video controls src="videos/blalenciaga.mov"></video></div>
-            <div class="portfolio-item"><video controls src="videos/EveryMinuteOfEveryDay.mov"></video></div>
-            <div class="portfolio-item"><video controls src="videos/DiorCoglone.mov"></video></div>
-            <div class="portfolio-item"><video controls src="videos/verly last time.mov"></video></div>
-            <div class="portfolio-item"><video controls src="videos/p2.mov"></video></div>
-        </div>
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: isgrouse@gmail.com</p>
+    <p>TikTok: @isgrouse</p>
+    <p>Instagram: @isgrouse</p>
+</section>
 
-        <div id="animation-videos" class="video-stack hidden">
-            <div class="portfolio-item"><video controls src="animations/crashesalot.mp4"></video></div>
-            <div class="portfolio-item"><video controls src="animations/store(1).mov"></video></div>
-            <div class="portfolio-item"><video controls src="animations/Vincestaples.mp4"></video></div>
-            <div class="portfolio-item"><video controls src="animations/gungeesdssd.mp4"></video></div>
-            <div class="portfolio-item"><video controls src="animations/vegetalasd.mp4"></video></div>
-        </div>
-    </section>
+<footer>
+    <p>&copy; 2025 Grouse</p>
+</footer>
 
-    <section id="contact" class="ui-layer">
-        <h2>Contact</h2>
-        <p>Email: isgrouse@gmail.com</p>
-        <p>TikTok: @isgrouse</p>
-        <p>Instagram: @isgrouse</p>
-    </section>
+<script>
+/* HEADER FONT CYCLING (no layout shift) */
+const fonts = ['Bebas Neue', 'Audiowide', 'Press Start 2P', 'Courier New'];
+let fontIndex = 0;
+const title = document.getElementById('header-title');
 
-    <section id="peek-section" class="ui-layer">
-        <button id="peek-bg">HOLD TO VIEW BACKGROUND</button>
-    </section>
+setInterval(() => {
+    title.style.opacity = 0;
+    setTimeout(() => {
+        title.style.fontFamily = fonts[fontIndex];
+        fontIndex = (fontIndex + 1) % fonts.length;
+        title.style.opacity = 1;
+    }, 120);
+}, 300);
 
-    <footer class="ui-layer">
-        <p>&copy; 2025 Grouse</p>
-    </footer>
+/* AUDIO + OVERLAY VIDEO */
+const audio = document.getElementById('grouse-audio');
+const overlay = document.getElementById('audio-overlay');
 
-    <script>
-        /* Header font cycling */
-        const fonts = [
-            'Bebas Neue',
-            'Audiowide',
-            'Press Start 2P',
-            'Permanent Marker',
-            'Courier New',
-            'Roboto',
-            'Shadows Into Light'
-        ];
+audio.volume = 0.25;
 
-        let fontIndex = 0;
-        const title = document.getElementById('header-title');
+const startAudio = () => {
+    audio.play().catch(() => {});
+    overlay.classList.add('active');
+};
 
-        setInterval(() => {
-            title.style.opacity = 0;
-            setTimeout(() => {
-                title.style.fontFamily = fonts[fontIndex];
-                fontIndex = (fontIndex + 1) % fonts.length;
-                title.style.opacity = 1;
-            }, 120);
-        }, 200);
+document.addEventListener('click', startAudio, { once: true });
 
-        /* Category toggle */
-        document.getElementById('toggleButton').onclick = () => {
-            editing-videos.classList.toggle('hidden');
-            animation-videos.classList.toggle('hidden');
-            categoryLabel.textContent =
-                editing-videos.classList.contains('hidden')
-                ? 'Viewing: Animation Videos'
-                : 'Viewing: Editing Videos';
-        };
+audio.addEventListener('ended', () => {
+    overlay.classList.remove('active');
+});
 
-        /* Audio */
-        const audio = document.getElementById('grouse-audio');
-        audio.volume = 0.25;
-        document.addEventListener('click', () => audio.play(), { once: true });
+/* TRUE PARALLAX SCROLL */
+const bgVideo = document.getElementById('bg-video');
 
-        /* Parallax background */
-        const bgVideo = document.getElementById('bg-video');
-        window.addEventListener('scroll', () => {
-            bgVideo.style.transform =
-                `translate(-50%, calc(-50% + ${window.scrollY * 0.15}px))`;
-        });
-
-        /* Hold-to-fade UI */
-        const uiLayers = document.querySelectorAll('.ui-layer');
-        const peekBtn = document.getElementById('peek-bg');
-
-        const fadeOut = () => uiLayers.forEach(el => el.classList.add('fade'));
-        const fadeIn = () => uiLayers.forEach(el => el.classList.remove('fade'));
-
-        peekBtn.addEventListener('mousedown', fadeOut);
-        peekBtn.addEventListener('mouseup', fadeIn);
-        peekBtn.addEventListener('mouseleave', fadeIn);
-        peekBtn.addEventListener('touchstart', fadeOut);
-        peekBtn.addEventListener('touchend', fadeIn);
-    </script>
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    bgVideo.style.transform =
+        `translate(-50%, calc(-50% + ${scrollTop * 0.3}px))`;
+});
+</script>
 
 </body>
 </html>

@@ -13,26 +13,18 @@
 
 <body>
 
-<!-- Audio -->
 <audio id="grouse-audio">
     <source src="videos/CallOfTheGrouse.mp3" type="audio/mp3">
 </audio>
 
-<!-- Background Video -->
 <div class="video-background">
     <video id="bg-video" autoplay loop muted playsinline>
         <source src="videos/guassian.mov" type="video/mp4">
     </video>
 </div>
 
-<!-- Overlay video triggered by audio -->
 <div id="audio-overlay">
-    <!-- ADD YOUR ALPHA VIDEO HERE -->
-    <!-- Example:
-    <video autoplay muted playsinline>
-        <source src="videos/overlay-alpha.webm" type="video/webm">
-    </video>
-    -->
+    <!-- PLACE ALPHA VIDEO HERE -->
 </div>
 
 <header>
@@ -61,7 +53,6 @@
 
 <section id="masterpieces">
     <h2>My Masterpieces</h2>
-
     <div class="video-stack">
         <video controls src="videos/blalenciaga.mov"></video>
         <video controls src="videos/EveryMinuteOfEveryDay.mov"></video>
@@ -83,7 +74,7 @@
 </footer>
 
 <script>
-/* HEADER FONT CYCLING (no layout shift) */
+/* HEADER FONT CYCLE */
 const fonts = ['Bebas Neue', 'Audiowide', 'Press Start 2P', 'Courier New'];
 let fontIndex = 0;
 const title = document.getElementById('header-title');
@@ -97,31 +88,44 @@ setInterval(() => {
     }, 120);
 }, 300);
 
-/* AUDIO + OVERLAY VIDEO */
+/* AUDIO + OVERLAY */
 const audio = document.getElementById('grouse-audio');
 const overlay = document.getElementById('audio-overlay');
-
 audio.volume = 0.25;
 
-const startAudio = () => {
+document.addEventListener('click', () => {
     audio.play().catch(() => {});
     overlay.classList.add('active');
-};
-
-document.addEventListener('click', startAudio, { once: true });
+}, { once: true });
 
 audio.addEventListener('ended', () => {
     overlay.classList.remove('active');
 });
 
-/* TRUE PARALLAX SCROLL */
+/* BOUNDED PARALLAX (CORRECT VERSION) */
 const bgVideo = document.getElementById('bg-video');
+const bottomMargin = 40; // space above bottom for clarity
 
-window.addEventListener('scroll', () => {
+function updateParallax() {
     const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
+    const winHeight = window.innerHeight;
+
+    const maxScroll = docHeight - winHeight;
+    const scrollProgress = Math.min(scrollTop / maxScroll, 1);
+
+    const videoHeight = bgVideo.offsetHeight;
+    const maxVideoScroll = Math.max(videoHeight - winHeight - bottomMargin, 0);
+
+    const videoOffset = scrollProgress * maxVideoScroll;
+
     bgVideo.style.transform =
-        `translate(-50%, calc(-50% + ${scrollTop * 0.3}px))`;
-});
+        `translate(-50%, calc(-50% + ${videoOffset}px))`;
+}
+
+window.addEventListener('scroll', updateParallax);
+window.addEventListener('resize', updateParallax);
+window.addEventListener('load', updateParallax);
 </script>
 
 </body>

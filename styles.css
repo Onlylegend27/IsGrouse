@@ -1,162 +1,112 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    color: #00FF00;
-    background-color: #000000;
+    font-family: 'Courier New', monospace;
+    color: #00ff88;
+    background: black;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-/* HEADER */
-header {
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 100%;
-    text-align: center;
+/* Background Video */
+.video-background {
     position: fixed;
-    z-index: 1000;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    filter: brightness(0.65);
+}
+
+/* Header */
+header {
+    position: fixed;
     top: 0;
+    width: 100%;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.75);
+    text-align: center;
+    z-index: 1000;
 }
 
 header h1 {
-    margin: 0;
-    padding: 20px;
-    font-size: 2em;
+    height: 60px;
+    line-height: 60px;
+    margin: 10px 0 0;
+    transition: opacity 0.15s ease;
+    white-space: nowrap;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
-    display: inline-block;
 }
 
-nav ul li {
+nav li {
     display: inline;
     margin: 0 15px;
 }
 
-nav ul li a {
-    color: #00FF00;
+nav a {
+    color: #00ff88;
     text-decoration: none;
-    font-family: 'Courier New', Courier, monospace;
 }
 
-/* MAIN SECTIONS */
+/* Sections */
 section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 120px 20px;
-    text-align: center;
     min-height: 100vh;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.parallax {
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-#home {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-#about, #portfolio, #contact {
-    background: rgba(0, 0, 0, 0.9);
-}
-
-/* VIDEO BACKGROUND */
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.video-background video {
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-}
-
-/* VIDEO SECTIONS - ENSURE FULL CENTERING */
-.video-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 140px 20px;
     text-align: center;
+    background: rgba(0, 0, 0, 0.75);
 }
 
-/* HIDE ANIMATION VIDEOS INITIALLY */
-#animation-videos {
+/* Video Grid */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.portfolio-item video {
+    width: 100%;
+    border: 1px solid #00ff88;
+}
+
+.hidden {
     display: none;
 }
 
-/* VIDEO ITEMS - MAINTAIN ORIGINAL SIZE & PERFECT CENTERING */
-.portfolio-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-    text-align: center;
-}
-
-/* Ensures video uses its natural dimensions */
-.portfolio-item video {
-    max-width: 100%; /* Prevents overflowing on smaller screens */
-    height: auto;
-    border: 2px solid #00FF00;
-    display: block;
-}
-
-/* VIDEO TOGGLE BUTTON */
-.category-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-    width: 100%;
-}
-
-.category-selector button {
-    background-color: #00FF00;
-    color: black;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
+/* Buttons */
+button {
+    background: rgba(0,255,136,0.15);
+    color: #00ff88;
+    border: 1px solid #00ff88;
+    padding: 8px 16px;
     cursor: pointer;
-    transition: 0.3s;
+    font-family: inherit;
 }
 
-.category-selector button:hover {
-    background-color: #009900;
+/* Peek Button */
+#peek-bg {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
 }
 
-/* FOOTER */
+/* Footer */
 footer {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #00FF00;
-    text-align: center;
     padding: 20px;
-    width: 100%;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* RESPONSIVE FIXES */
-@media (max-width: 768px) {
-    .portfolio-item {
-        width: 100%;
-    }
+    text-align: center;
+    background: rgba(0,0,0,0.8);
 }

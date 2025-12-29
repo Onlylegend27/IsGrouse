@@ -18,14 +18,15 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    min-height: 120%;
+    min-height: 125%;
     min-width: 110%;
     object-fit: cover;
-    filter: brightness(0.85);
+    transform: translate(-50%, -50%);
+    filter: brightness(0.9);
+    will-change: transform;
 }
 
-/* AUDIO OVERLAY VIDEO */
+/* AUDIO OVERLAY */
 #audio-overlay {
     position: fixed;
     inset: 0;
@@ -37,12 +38,6 @@ body {
 
 #audio-overlay.active {
     opacity: 1;
-}
-
-#audio-overlay video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 /* HEADER */
